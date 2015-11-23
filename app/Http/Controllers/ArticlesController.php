@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Article;
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
 use App\Http\Requests\ArticleRequest;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\HttpResponse;
+//use App\Http\Controllers\Controller;
 
 class ArticlesController extends Controller
 {
