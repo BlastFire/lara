@@ -15,7 +15,7 @@ class ArticlesController extends Controller
     public function index()
     {
     	$articles = Article::latest()->get();
-    	
+
     	return view('articles.index', compact('articles'));
     }
 
@@ -50,5 +50,4 @@ class ArticlesController extends Controller
 
     	return redirect('articles');
     }
-
 }
