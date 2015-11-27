@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Article;
 use App\Http\Requests;
 use App\Http\Requests\ArticleRequest;
@@ -12,10 +13,16 @@ use Illuminate\HttpResponse;
 
 class ArticlesController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth', ['only' => 'create']);
+    }
+
     public function index()
     {
     	$articles = Article::latest()->get();
-    	
+
     	return view('articles.index', compact('articles'));
     }
 
@@ -32,7 +39,9 @@ class ArticlesController extends Controller
 
     public function store(ArticleRequest $request) 
     {
-    	Article::create($request->all());
+        $article = new Article($request->all());
+        Auth::user()->articles()->save($article);
+    	//Article::create($request->all());
 
     	return redirect('articles');
     }
@@ -50,5 +59,4 @@ class ArticlesController extends Controller
 
     	return redirect('articles');
     }
-
 }
