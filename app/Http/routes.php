@@ -11,17 +11,19 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('home');
+});
 
 // Route::get('articles', 'ArticlesController@index');
 // Route::get('articles/create', 'ArticlesController@create');
 // Route::get('articles/{id}', 'ArticlesController@show');
 // Route::post('articles', 'ArticlesController@store');
 
-Route::get('/', 'WelcomeController@contact');
-Route::resource('articles', 'ArticlesController');
+//Route::get('/', 'WelcomeController@contact');
+
+//tutorial1 from laracast
+//Route::resource('articles', 'ArticlesController');
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
