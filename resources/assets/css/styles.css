@@ -4,8 +4,8 @@ dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot,
 canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time,
 mark, audio, video {   margin: 0;   padding: 0;   border: 0;   font-size: 100%;   font: inherit;   vertical-align:
 baseline;   outline: none;   -webkit-box-sizing: border-box;   -moz-box-sizing: border-box;   box-sizing: border-box; }
-html { height: 101%; } body { background: #e3e0ef url('images/bg.png'); font-size: 62.5%; line-height: 1; font-family:
-Arial, sans-serif; padding-bottom: 65px; }
+html { height: 101%; } body { background: #e3e0ef url('../images/bg.png'); font-size: 62.5%; line-height: 1; font-family:
+Arial, sans-serif; padding-top: 70px; }
 
 ::selection { background: #d7d0f3; }
 ::-moz-selection { background: #d7d0f3; }
@@ -31,7 +31,7 @@ a { color: #896dc6; text-decoration: none; }
 a:hover { text-decoration: underline; }
 
 /* page layout structure */ 
-#w { display: block; width: 700px; margin: 0 auto; padding-top: 35px; }
+#w { display: block; width: 1680px; margin: 0 auto; padding-top: 35px; }
 
 #container { 
   display: block; 
