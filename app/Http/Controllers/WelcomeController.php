@@ -9,9 +9,8 @@ use App\Http\Controllers\Controller;
 
 class WelcomeController extends Controller
 {
-    //
-    public function contact()
-    {
-    	return 'Contact me';
-    }
+	public function index()
+	{
+		return view('grizmin.index');
+	}
 }

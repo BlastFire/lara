@@ -1,29 +1,23 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
-
-Route::get('/', function () {
-    return view('grizmin.index');
-});
+// Route::get('/', function () {
+//     return view('grizmin.index');
+// });
 
 // Route::get('articles', 'ArticlesController@index');
 // Route::get('articles/create', 'ArticlesController@create');
 // Route::get('articles/{id}', 'ArticlesController@show');
 // Route::post('articles', 'ArticlesController@store');
 
-//Route::get('/', 'WelcomeController@contact');
-
 //tutorial1 from laracast
 //Route::resource('articles', 'ArticlesController');
+
+//Main route
+Route::get('/', 'WelcomeController@index');
+
+//Route to the posts
+Route::get('posts', "PostsController@index");
+
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
