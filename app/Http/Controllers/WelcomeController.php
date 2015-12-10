@@ -11,6 +11,6 @@ class WelcomeController extends Controller
 {
 	public function index()
 	{
-		return view('grizmin.index');
+		return "try /post";
 	}
 }

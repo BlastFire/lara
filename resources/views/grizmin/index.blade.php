@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-<h1>Grizmin content</h1>
+<h1>Wadapp content</h1>
 
 	<ul id="comments">
 		@foreach($posts as $post)
@@ -13,16 +13,16 @@
 				</div>
 			    <div class="cmmnt-content">
 			    	<header>
-
 			      		<a href="javascript:void(0);" class="userlink">{{ $post->user->name }}</a>
 			      		- 
-		      			<span class="pubdate">posted 1 week ago
+		      			<span class="pubdate">{{ $post->published_at->diffForHumans() }}
 		      			</span>
 	      		    </header>
 			        <p>
 			        	{{ $post->body }}
 			        </p>
 			    </div>
+			    TODO
 			</li>
 		@endforeach
 	</ul>

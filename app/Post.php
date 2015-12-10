@@ -12,6 +12,8 @@ class Post extends Model
     	'user_id'
     ];
 
+    protected $dates = ['published_at'];
+
 	/**
 	 * Post is owned by a user.
 	 */
