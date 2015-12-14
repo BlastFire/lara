@@ -17,6 +17,7 @@ Route::get('/', 'WelcomeController@index');
 
 //Route to the posts
 Route::get('posts', "PostsController@index");
+Route::get('post/{id}', "PostsController@show");
 
 
 // Authentication routes...

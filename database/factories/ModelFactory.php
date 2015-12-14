@@ -28,3 +28,13 @@ $factory->define(App\Post::class, function (Faker\Generator $faker) {
         'user_id' => $faker->biasedNumberBetween($min = 6, $max = 10, $function = 'sqrt')
     ];
 });
+
+$factory->define(App\Comment::class, function (Faker\Generator $faker) {
+    return [
+        'body' => $faker->paragraph,
+        'published_at' => $faker->dateTime(),
+        'user_id' => $faker->biasedNumberBetween($min = 6, $max = 10, $function = 'sqrt'),
+        'parent_id' => $faker->biasedNumberBetween($min = 0, $max = 0, $function = 'sqrt'),
+        'post_id' => $faker->biasedNumberBetween($min = 3, $max = 12, $function = 'sqrt')
+    ];
+});

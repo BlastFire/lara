@@ -13,16 +13,13 @@
 				</div>
 			    <div class="cmmnt-content">
 			    	<header>
-			      		<a href="javascript:void(0);" class="userlink">{{ $post->user->name }}</a>
+			      		<a href="{{ url('/post', $post->id) }}" class="userlink">{{ $post->title }}</a>
 			      		- 
 		      			<span class="pubdate">{{ $post->published_at->diffForHumans() }}
 		      			</span>
 	      		    </header>
-			        <p>
-			        	{{ $post->body }}
-			        </p>
+	      		    <a href="javascript:void(0);" class="userlink">{{ $post->user->name }}</a>
 			    </div>
-			    TODO
 			</li>
 		@endforeach
 	</ul>
