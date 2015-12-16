@@ -9,7 +9,6 @@ use App\Http\Requests\ArticleRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\HttpResponse;
-//use App\Http\Controllers\Controller;
 
 class ArticlesController extends Controller
 {

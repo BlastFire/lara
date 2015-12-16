@@ -13,20 +13,25 @@ use Illuminate\Support\Collection;
 
 class PostsController extends Controller
 {
+	/**
+	 * Index page for all the posts
+	 * (by the laravel convention)
+	 *
+	 * @return view
+	 **/
     public function index()
     {
-    	$posts = Post::with('user')->paginate();
-
-    	$comments = Comment::where('post_id', 12)->get();
-    	$comments_by_id = new Collection;
-
-    	//return dd($comments_by_id);
-
-
+    	$posts = Post::with('user')->paginate(20);
 
     	return view('wadapp.index', compact('posts'));
     }
 
+    /**
+     * View single post
+     *
+	 * (by the laravel convention)
+     * @return view
+     **/
     public function show($id)
     {
     	$post = Post::with('user')->find($id);
@@ -36,6 +41,33 @@ class PostsController extends Controller
     	return view('wadapp.show', compact('post', 'comments'));
     }
 
+    /**
+     * Create a post
+     *
+     * @return view
+     * @author 
+     **/
+    public function create()
+    {
+    	return view('wadapp.create');
+    }
+
+    /**
+     * Stores post from user
+     *
+     * @return void
+     * @author 
+     **/
+    public function store()
+    {
+    	return "created";
+    }
+
+    /**
+     * Helper method for sorting all the child comments to their parent
+     *
+     * @return the sorted comments
+     **/
     private function allComments($post_id)
     {
         $comments = Comment::where('post_id', $post_id)->get();

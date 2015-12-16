@@ -17,8 +17,9 @@ Route::get('/', 'WelcomeController@index');
 
 //Route to the posts
 Route::get('posts', "PostsController@index");
+Route::get('post/create', "PostsController@create");
 Route::get('post/{id}', "PostsController@show");
-
+Route::post('post', 'PostsController@store');
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');

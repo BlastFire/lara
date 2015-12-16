@@ -2,6 +2,7 @@
 
 @section('content')
 <h1>Wadapp content</h1>
+	<a href="{{ url('/post/create') }}">Create post</a>
 
 	<ul id="comments">
 		@foreach($posts as $post)
@@ -23,5 +24,6 @@
 			</li>
 		@endforeach
 	</ul>
-
+	<!-- showing the paginator for the posts  -->
+	{!! $posts->render() !!}
 @stop
