@@ -5,7 +5,7 @@
 <br />
 
 {!! Form::open(['url' => 'post']) !!}
-	@include('wadapp.form', ['submitButtonText' => 'Add Post'])
+	@include('wadapp.post_form', ['submitButtonText' => 'Add Post'])
 {!! Form::close() !!}
 
 @include('errors.list')

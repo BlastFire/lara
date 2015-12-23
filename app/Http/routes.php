@@ -18,8 +18,12 @@ Route::get('/', 'WelcomeController@index');
 //Route to the posts
 Route::get('posts', "PostsController@index");
 Route::get('post/create', "PostsController@create");
-Route::get('post/{id}', "PostsController@show");
+Route::get('post/{id}', ['as' => 'postEdit', 'uses' => 'PostsController@show']); //named to route for redirects in controller
 Route::post('post', 'PostsController@store');
+
+//Route to the comments per post
+Route::get('post/{id}/comment', ['as' => 'addCommentRoute', 'uses' => "CommentsController@index"]); //pokaji formata
+Route::post('post/{id}/comment', "CommentsController@store"); //submitni formata
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');

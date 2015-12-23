@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class MyPostRequest extends Request
+class MyCommentRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,12 +24,11 @@ class MyPostRequest extends Request
     public function rules()
     {
         return [
-            'title' => [
+            'titlesh' => [
                 'required'
                 //'min:3'
             ],
             'body'  => 'required'
         ];
     }
-
 }

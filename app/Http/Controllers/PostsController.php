@@ -4,15 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Auth;
 use App\Post;
 use App\User;
 use App\Comment;
 use App\Http\Requests;
+use App\Http\Requests\MyPostRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Collection;
 
 class PostsController extends Controller
 {
+	function __construct() {
+		$this->middleware('auth', ['only' => 'create']);
+	}
+
 	/**
 	 * Index page for all the posts
 	 * (by the laravel convention)
@@ -58,9 +64,13 @@ class PostsController extends Controller
      * @return void
      * @author 
      **/
-    public function store()
+    public function store(MyPostRequest $request)
     {
-    	return "created";
+		$post = new Post($request->all());
+    	Auth::user()->posts()->save($post);
+
+    	//return redirect()->route('postEdit', [Auth::user()->id]); //keep only for redirect way
+    	return redirect('posts'); // redirects to route,calls index method in this controller
     }
 
     /**
