@@ -18,15 +18,20 @@ class CommentsController extends Controller
 		return view('wadapp.create_comments', compact('post_id'));
 	}
 
-	public function store($id, MyCommentRequest $request)
+	public function store($post_id, MyCommentRequest $request)
 	{
 		//the post_id from URI
 		return $id;
 		//store in db
 		$comment = new Comment($request->all());
-		Auth::user()->posts()->save($comment);
-		return $comment->post_id;
-		//redirect to the post
-		return redirect()->route('postEdit', $comment->post_id);
+
+		//auto cast to int from the model (see 'casts' array)
+		$comment->post_id = $post_id;
+		$comment->user_id = Auth::user()->id;
+		$comment->save();
+
+		//return $comment;
+		//redirect to the post !!
+		return redirect('posts');
 	}
 }

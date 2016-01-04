@@ -24,7 +24,10 @@ class MyCommentRequest extends Request
     public function rules()
     {
         return [
-            'body'  => 'required'
+            'body'  => [
+                'required',
+                'min:3'
+            ]
         ];
     }
 }

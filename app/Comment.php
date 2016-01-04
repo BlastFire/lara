@@ -16,6 +16,10 @@ class Comment extends Model
 
     protected $dates = ['published_at'];
 
+    protected $casts = [
+    'post_id' => 'integer',
+    ];
+
 
     /**
      * Comment is owned by a user
