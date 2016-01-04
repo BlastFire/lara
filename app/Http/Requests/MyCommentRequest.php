@@ -24,10 +24,6 @@ class MyCommentRequest extends Request
     public function rules()
     {
         return [
-            'titlesh' => [
-                'required'
-                //'min:3'
-            ],
             'body'  => 'required'
         ];
     }

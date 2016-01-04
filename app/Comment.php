@@ -17,8 +17,12 @@ class Comment extends Model
     protected $dates = ['published_at'];
 
 
-    // public function children()
-    // {
-    // 	$this->hasMany('Comment', 'parent_id', 'id');
-    // }
+    /**
+     * Comment is owned by a user
+     *
+     **/
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

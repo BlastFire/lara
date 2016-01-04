@@ -50,4 +50,13 @@ class User extends Model implements AuthenticatableContract,
     public function posts() {
         return $this->hasMany('App\Post');
     }
+
+    /**
+     * A user can hanve many comments
+     *
+     **/
+    public function comments()
+    {
+        return $this->hasMany('App\Comment');
+    }
 }

@@ -1,7 +1,7 @@
 	<ul id="comments">
 		<li class="cmmnt">
 		    <div class="cmmnt-content">
-      		    <a href="javascript:void(0);" class="userlink">Username</a>
+      		    <a href="javascript:void(0);" class="userlink">{{ $comment->user->name }}</a>
 		        <p>
 		        	{{ $comment->body }}
 		        </p>

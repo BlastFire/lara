@@ -80,7 +80,7 @@ class PostsController extends Controller
      **/
     private function allComments($post_id)
     {
-        $comments = Comment::where('post_id', $post_id)->get();
+        $comments = Comment::with('user')->where('post_id', $post_id)->get();
 
         $comments_by_id = new Collection;
 
