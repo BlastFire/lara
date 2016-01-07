@@ -24,6 +24,8 @@ Route::post('post', 'PostsController@store');
 //Route to the comments per post
 Route::get('post/{id}/comment', ['as' => 'addCommentRoute', 'uses' => "CommentsController@index"]); //pokaji formata
 Route::post('post/{id}/comment', "CommentsController@store"); //submitni formata
+Route::get('post/{id}/comment/{comment_parent_id}', ['as' => 'addChildCommentRoute', 'uses' => "CommentsController@index"]);
+Route::post('post/{id}/comment/{comment_parent_id}', "CommentsController@childStore");
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');

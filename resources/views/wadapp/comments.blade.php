@@ -5,6 +5,12 @@
 		        <p>
 		        	{{ $comment->body }}
 		        </p>
+		        <span>
+		        	{!! link_to_route('addChildCommentRoute', 'Reply', [
+						$post->id,
+		        		$comment->id
+					])!!}
+		        </span>
 		    </div>
 		</li>
 		@if ($comment->children->count() > 0)

@@ -13,15 +13,13 @@ use App\Comment;
 
 class CommentsController extends Controller
 {
-	public function index($post_id)
+	public function index($post_id, $comment_parent_id = 0)
 	{
-		return view('wadapp.create_comments', compact('post_id'));
+		return view('wadapp.create_comments', compact('post_id', 'comment_parent_id'));
 	}
 
 	public function store($post_id, MyCommentRequest $request)
 	{
-		//the post_id from URI
-		return $id;
 		//store in db
 		$comment = new Comment($request->all());
 
@@ -33,5 +31,15 @@ class CommentsController extends Controller
 		//return $comment;
 		//redirect to the post !!
 		return redirect('posts');
+	}
+
+	/**
+	 * Store child comment
+	 *
+	 * @return view
+	 **/
+	public function childStore($post_id, $comment_parent_id, MyCommentRequest $request)
+	{
+		return $post_id . " " . $comment_parent_id;
 	}
 }
