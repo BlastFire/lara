@@ -20,17 +20,9 @@ class CommentsController extends Controller
 
 	public function store($post_id, MyCommentRequest $request)
 	{
-		//store in db
-		$comment = new Comment($request->all());
+		$this->saveComment($request, $post_id);
 
-		//auto cast to int from the model (see 'casts' array)
-		$comment->post_id = $post_id;
-		$comment->user_id = Auth::user()->id;
-		$comment->save();
-
-		//return $comment;
-		//redirect to the post !!
-		return redirect('posts');
+		return redirect()->route('postEdit', $post_id); //keep only for redirect way
 	}
 
 	/**
@@ -40,6 +32,29 @@ class CommentsController extends Controller
 	 **/
 	public function childStore($post_id, $comment_parent_id, MyCommentRequest $request)
 	{
-		return $post_id . " " . $comment_parent_id;
+		$this->saveComment($request, $post_id, $comment_parent_id);
+
+		return redirect()->route('postEdit', $post_id); //keep only for redirect way
+	}
+
+	/**
+	 * Helper for saving the comment
+	 *
+	 * @return void
+	 **/
+	private function saveComment(MyCommentRequest $request, $post_id, $comment_parent_id = -1)
+	{
+		//store in db
+		$comment = new Comment($request->all());
+
+		//auto cast to int from the model (see 'casts' array)
+		$comment->post_id = $post_id;
+		$comment->user_id = Auth::user()->id;
+		//save the child comment
+		if ($comment_parent_id >= 0)
+		{
+			$comment->parent_id = $comment_parent_id;
+		}
+		$comment->save();
 	}
 }
