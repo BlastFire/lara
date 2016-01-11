@@ -16,7 +16,7 @@ use Illuminate\Support\Collection;
 class PostsController extends Controller
 {
 	function __construct() {
-		$this->middleware('auth', ['only' => 'create']);
+		//$this->middleware('auth', ['only' => 'create']);
 	}
 
 	/**
