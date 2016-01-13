@@ -5,7 +5,7 @@
 	<title>Put title here</title>
 	<link rel="stylesheet" type="text/css" href="/css/app.css">
 	<link rel="stylesheet" type="text/css" href="/css/all.css">
-	<!-- <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Wellfleet"> -->
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Wellfleet">
 </head>
 <body>
 	<header>
@@ -18,5 +18,6 @@
 		</div>
 	</div>
 
+@yield('javascript')
 </body>
 </html>
