@@ -27,8 +27,8 @@ class PostsController extends Controller
 	 **/
     public function index()
     {
-    	$posts = Post::with('user')->paginate(20);
-        return $posts;
+    	$posts = Post::with('user')->get(); //->paginate(20)
+        //return $posts;
     	return view('wadapp.index', compact('posts'));
     }
 

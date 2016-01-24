@@ -3,7 +3,7 @@
 @section('content')
 <h1>Wadapp content</h1>
 
-	<posts list="{{ json_encode($posts) }}"></posts>
+	<posts :list="{{ $posts }}"></posts>
 
 	<template id="posts-template">
 		<a href="{{ url('/post/create') }}">Create post</a>
@@ -37,7 +37,9 @@
 	</template>
 
 	<!-- showing the paginator for the posts  -->
-	{!! $posts->render() !!}
+	<!-- cant use vue with pagination.-->
+	<!-- comments from html -->
+	{{-- {!! $posts->render() !!} --}}
 @stop
 
 @section('javascript')

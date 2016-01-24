@@ -1,6 +1,6 @@
 Vue.component('posts', {
 	template: '#posts-template',
-	props: ['list']
+	props: ['list'],
 
 });
 new Vue({

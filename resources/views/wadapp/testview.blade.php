@@ -4,14 +4,17 @@
 
 <h1>Test view env</h1>
 <div id="testcontainer">
-	<ul class="list-group">
-		@foreach(json_decode($testdata) as $v)
-		<li class="list-group-item">
-			{{ $v->firstname }}
-		</li>
-		@endforeach
-	</ul>
+	<tdata :list="{{ $testdata }}"></tdata>
 </div>
+
+<template id="testsdataid">
+	<pre>{{ $testdata }}</pre>
+	<ul class="list-group">
+		<li class="list-group-item" v-for="task in list">
+			@{{ task.firstname }}
+		</li>
+	</ul>
+</template>
 @stop
 
 @section('javascript')

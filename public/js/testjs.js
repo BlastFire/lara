@@ -1,6 +1,7 @@
 Vue.component('tdata', {
 	template: '#testsdataid',
-	props: ['list']
+	props: ['list'],
+
 });
 
 new Vue({
