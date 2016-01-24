@@ -42,3 +42,9 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
 Route::get('admin', function() {
 	return "TO CREATE";
 });
+
+//Ajax api for vote
+Route::get('crown', 'CrownController@index');
+
+//Testing api
+Route::get('testview', 'CrownController@testview');

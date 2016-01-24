@@ -284,3 +284,8 @@ ul ul .cmmnt {
 #comments .cmmnt .votebuttons button {
   display: block;
 }
+
+#comments .cmmnt .votecounter {
+  float: left;
+  display: block;
+}

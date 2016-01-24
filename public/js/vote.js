@@ -1,3 +1,8 @@
+Vue.component('posts', {
+	template: '#posts-template',
+	props: ['list']
+
+});
 new Vue({
 	el: '#w',
 	http: {
@@ -6,17 +11,24 @@ new Vue({
         	//"Access-Control-Allow-Origin": "https://maxcvservices.dnb.com"
       	}
 	},
+	data: {
+
+	},
 	methods: {
-			voteUp: function() {
-			alert("voteUp");
+		voteUp: function() {
+			this._fetchdnb(1);
 		},
 		voteDown: function() {
-			alert("voteDown");
+			this._fetchdnb(0);
 		},
-		fetchdnb: function() {
+		_fetchdnb: function(vote) {
 			//this.$http.get('https://maxcvservices.dnb.com/V5.0/organizations/804735132/products/DCP_STD', function(rData) {
 			//	console.log(rData);
 			//}.bind(this));
+			this.$http.get('crown').then(function(rData){
+				this.$set('someData', rData.data);
+			});
+			
 		}
 	}
 });
