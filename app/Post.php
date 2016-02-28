@@ -9,7 +9,8 @@ class Post extends Model
     protected $fillable = [
     	'title',
     	'body',
-    	'user_id'
+    	'user_id',
+        'page_rank'
     ];
 
     protected $dates = ['published_at'];
@@ -20,4 +21,5 @@ class Post extends Model
     public function user() {
     	return $this->belongsTo('App\User');
     }
+
 }

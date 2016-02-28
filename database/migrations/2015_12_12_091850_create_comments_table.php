@@ -25,6 +25,11 @@ class CreateCommentsTable extends Migration
                 ->references('id')
                 ->on('users')
                 ->onDelete('cascade');
+
+            $table->foreign('post_id')
+                ->references('id')
+                ->on('posts')
+                ->onDelete('cascade');
         });
     }
 

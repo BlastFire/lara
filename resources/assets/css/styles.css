@@ -82,7 +82,7 @@ a:hover { text-decoration: underline; }
   float:left;
 }
 
-#comments .cmmnt .votebuttons button {
+#comments .cmmnt .votebuttons img {
  display: block;
 
 }

@@ -13,7 +13,7 @@ class CrownController extends Controller
      * Test function for various shits
      *
      **/
-    public function index()
+    public function index($post_id, $increment)
     {
     	// if(Request::ajax()) {
      //  		// $data = Input::all();
@@ -23,7 +23,7 @@ class CrownController extends Controller
     	// return "no";
 
     	//return Request::json(array("name" => "velizar"));
-    	return "5";
+    	return $post_id . ' ' . $increment;
     }
 
     public function testview() {

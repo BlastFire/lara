@@ -43,8 +43,8 @@ Route::get('admin', function() {
 	return "TO CREATE";
 });
 
-//Ajax api for vote
-Route::get('crown', 'CrownController@index');
+//Ajax api for post voting
+Route::get('post_counter/{post_id}/{increment}', 'ApiController@manipulatePostCounter');
 
 //Testing api
 Route::get('testview', 'CrownController@testview');

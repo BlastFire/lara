@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use DB;
 use Auth;
 use App\Post;
 use App\User;
 use App\Comment;
+use HelperEnums\PostLiked;
 use App\Http\Requests;
 use App\Http\Requests\MyPostRequest;
 use App\Http\Controllers\Controller;
@@ -28,9 +30,20 @@ class PostsController extends Controller
     public function index()
     {
     	$posts = Post::with('user')->get(); //->paginate(20)
+
+        //not auth user in the page
+        if(!Auth::user()) {
+            //return view('wadapp.index', compact('posts'));
+            return $posts;
+        }
+
+        //for the auth users, return vote likes in posts
+        $posts = $this->appendUserLikesPerPost($posts);
+
         //return $posts;
     	return view('wadapp.index', compact('posts'));
     }
+
 
     /**
      * View single post
@@ -102,4 +115,44 @@ class PostsController extends Controller
 
         return $comments;
     }
+
+    /**
+     * undocumented function
+     *
+     * @return void
+     * @author 
+     **/
+    private function changeAndSavePageRank($pageRankValue)
+    {
+       if(empty($pageRankValue)) {
+            //decrease page rank
+            $pagerank = $post->page_rank;
+            $pagerank++;
+        }
+        else {
+            //$post->page_rank;
+            //increase page rank
+            $post->page_rank;
+        }
+    }
+
+    private function appendUserLikesPerPost($posts)
+    {
+        $filteredVotedPostsId = array();
+        $postVotesForLoggedUser = DB::table('postvotes')->where('user_id', Auth::user()->getId())->get();
+        //return $postVotesForLoggedUser;
+        foreach ($postVotesForLoggedUser as $k => $v) {
+            $filteredVotedPostsId[$v->post_id] = $v;
+        }
+        //return $filteredVotedPostsId;
+        foreach ($posts as $post) {
+            if(array_key_exists($post->id, $filteredVotedPostsId)) {
+                $postLike = $filteredVotedPostsId[$post->id]->liked;
+                $postLike == 0 ? $post->liked = PostLiked::disliked : $post->liked = PostLiked::liked;
+            }
+        }
+        return $posts;
+    }
+
+         
 }

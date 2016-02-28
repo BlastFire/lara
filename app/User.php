@@ -38,6 +38,16 @@ class User extends Model implements AuthenticatableContract,
     protected $hidden = ['password', 'remember_token'];
 
     /**
+     * Returns the user id
+     *
+     * @return int
+     **/
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
      * A user can have many articles
      */
     public function articles() {
@@ -52,7 +62,7 @@ class User extends Model implements AuthenticatableContract,
     }
 
     /**
-     * A user can hanve many comments
+     * A user can have many comments
      *
      **/
     public function comments()

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePostsTable extends Migration
+class CreatePostvotingTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,25 +12,22 @@ class CreatePostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
-            $table->increments('id');
+         Schema::create('postvotes', function (Blueprint $table) {
             $table->integer('user_id')->unsigned();
-            $table->integer('page_rank')->unsigned();
-            $table->string('title');
-            $table->string('body');
-            $table->timestamp('published_at');
-            $table->timestamps();
+            $table->integer('post_id')->unsigned();
+            $table->tinyInteger('liked');
 
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
                 ->onDelete('cascade');
 
-            $table->foreign('id')
-                ->references('post_id')
-                ->on('postvotes')
+            $table->foreign('post_id')
+                ->references('id')
+                ->on('posts')
                 ->onDelete('cascade');
-        });
+
+            });
     }
 
     /**
@@ -40,6 +37,6 @@ class CreatePostsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('posts');
+        Schema::drop('postvotes');
     }
 }

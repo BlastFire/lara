@@ -14,10 +14,10 @@ class DatabaseSeeder extends Seeder
     {
         Model::unguard();
 
-        // $this->call(UserTableSeeder::class);
+        //$this->call(UserTableSeeder::class);
         //factory(App\User::class, 4)->create();
         //creates 10 test posts
-        //factory(App\Post::class, 10)->create();
+        factory(App\Post::class, 10)->create();
         //creates 6 comments
         //factory(App\Comment::class, 6)->create();
 
