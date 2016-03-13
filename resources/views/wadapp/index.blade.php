@@ -4,6 +4,7 @@
 <h1>Wadapp content</h1>
 
 	<a href="{{ url('/post/create') }}">Create post</a>
+
 	<posts posts="{{ json_encode($posts) }}"></posts>
 
 	<template id="posts-template">
@@ -11,9 +12,10 @@
 				<li class="cmmnt" v-for="post in posts" >
 						<div class="votecounter">@{{ post.page_rank }}</div>
 						<div class="votebuttons">
-							<img id="@{{ post.id }}" src="images/up_arrow_black.png" @click="voteUp(post.id)" />
-							<button @click="voteDown(post.id)">Vote down</button>
-
+							<div class="@{{ post.likeUpClass }}"
+								id="@{{ post.id }}"  @click="voteUp(post.id)"></div>
+							<div class="@{{ post.likeDownClass }}"
+								id="@{{ post.id }}"  @click="voteDown(post.id)"></div>
 						</div>
 
 						<div class="avatar">
@@ -34,8 +36,6 @@
 		</ul>
 	</template>		
 
-
-
 	<!-- showing the paginator for the posts  -->
 	<!-- cant use vue with pagination.-->
 	<!-- comments from html -->
@@ -47,14 +47,5 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/0.6.0/vue-resource.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
 	
-	<script>
-		
-		// window.PostCounterImages = {
-  //     		img_arrowup_black: "images/up_arrow_black.png",
-  //     		img_arrowup_green: "images/up_arrow_green.png",
-  //     		img_arrowdown_black: "images/down_arrow_black.png",
-  //     		img_arrowdown_green: "images/down_arrow_green.png",
-  //   	};
-	</script>
 	<script type="text/javascript" src="/js/vote.js"></script>
 @stop

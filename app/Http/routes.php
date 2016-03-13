@@ -44,7 +44,7 @@ Route::get('admin', function() {
 });
 
 //Ajax api for post voting
-Route::get('post_counter/{post_id}/{increment}', 'ApiController@manipulatePostCounter');
+Route::get('post_counter/{post_id}/{postVoteType}', 'ApiController@manageVote');
 
 //Testing api
 Route::get('testview', 'CrownController@testview');

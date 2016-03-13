@@ -33,8 +33,7 @@ class PostsController extends Controller
 
         //not auth user in the page
         if(!Auth::user()) {
-            //return view('wadapp.index', compact('posts'));
-            return $posts;
+            return view('wadapp.index', compact('posts'));
         }
 
         //for the auth users, return vote likes in posts
@@ -140,17 +139,32 @@ class PostsController extends Controller
     {
         $filteredVotedPostsId = array();
         $postVotesForLoggedUser = DB::table('postvotes')->where('user_id', Auth::user()->getId())->get();
-        //return $postVotesForLoggedUser;
+
         foreach ($postVotesForLoggedUser as $k => $v) {
             $filteredVotedPostsId[$v->post_id] = $v;
         }
-        //return $filteredVotedPostsId;
+
         foreach ($posts as $post) {
             if(array_key_exists($post->id, $filteredVotedPostsId)) {
                 $postLike = $filteredVotedPostsId[$post->id]->liked;
-                $postLike == 0 ? $post->liked = PostLiked::disliked : $post->liked = PostLiked::liked;
+                $post->liked = $postLike;
+
+                //set the vote image class
+                if($postLike > 0 ) {
+                    $post->likeUpClass = "vote_up_special";
+                    $post->likeDownClass = "vote_down_normal";
+                } else {
+                    $post->likeUpClass = "vote_up_normal";
+                    $post->likeDownClass = "vote_down_special";
+                }
+            }
+            else {
+                $post->liked = PostLiked::notvoted;
+                $post->likeUpClass = "vote_up_normal";
+                $post->likeDownClass = "vote_down_normal";
             }
         }
+
         return $posts;
     }
 

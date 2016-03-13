@@ -15,7 +15,7 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->integer('page_rank')->unsigned();
+            $table->integer('page_rank');
             $table->string('title');
             $table->string('body');
             $table->timestamp('published_at');
@@ -24,11 +24,6 @@ class CreatePostsTable extends Migration
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
-                ->onDelete('cascade');
-
-            $table->foreign('id')
-                ->references('post_id')
-                ->on('postvotes')
                 ->onDelete('cascade');
         });
     }
@@ -40,6 +35,8 @@ class CreatePostsTable extends Migration
      */
     public function down()
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         Schema::drop('posts');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }
